@@ -1,6 +1,7 @@
 # 数字人后台管理系统
 
-这是一个基于Vue3和Spring Boot的后台管理系统，主要用于管理数字人相关资源和用户。适合小型项目作为后台管理系统使用
+这是一个基于Vue3和Spring Boot的后台管理系统，主要用于管理数字人相关资源和用户。适合小型项目作为后台管理系统使用。
+
 演示站:https://admincs.chataot.cn/
 
 ![image](https://github.com/user-attachments/assets/b5b69337-32b8-4fd9-8ab1-88bf758c3e53)
