@@ -1,0 +1,79 @@
+@import './variables.scss';
+
+/* 全局样式 */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+  font-size: 14px;
+  color: $dark-text;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f7fa;
+}
+
+/* 通用边距类 */
+.mr-sm {
+  margin-right: $spacing-sm;
+}
+
+.ml-sm {
+  margin-left: $spacing-sm;
+}
+
+.mt-sm {
+  margin-top: $spacing-sm;
+}
+
+.mb-sm {
+  margin-bottom: $spacing-sm;
+}
+
+.pt-md {
+  padding-top: $spacing-md;
+}
+
+/* 通用文本类 */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-primary {
+  color: $primary-color;
+}
+
+.text-success {
+  color: $success-color;
+}
+
+.text-warning {
+  color: $warning-color;
+}
+
+.text-danger {
+  color: $danger-color;
+}
+
+.text-info {
+  color: $info-color;
+}
+
+/* 通用容器类 */
+.app-container {
+  padding: 20px;
+}
+
+/* 修复ElementPlus相关样式 */
+.el-button + .el-button {
+  margin-left: 8px;
+}
+
+.el-table .cell {
+  word-break: normal;
+  white-space: nowrap;
+} 

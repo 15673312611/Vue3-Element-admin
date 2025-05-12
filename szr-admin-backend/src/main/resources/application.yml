@@ -1,0 +1,66 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: szr-admin
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/shuzr?serverTimezone=Asia/Shanghai&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&rewriteBatchedStatements=true
+    username: root
+    password: root
+    druid:
+      initial-size: 5
+      min-idle: 10
+      max-active: 20
+      max-wait: 60000
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+  main:
+    allow-circular-references: true
+    allow-bean-definition-overriding: true
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  type-aliases-package: com.szr.admin.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted  # 全局逻辑删除字段名
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+
+# 日志配置
+logging:
+  level:
+    com.szr.admin: debug
+    org.springframework: warn
+    org.springframework.security: debug
+
+# JWT配置
+jwt:
+  # JWT加解密使用的密钥
+  secret: 8Zz5tw0Ionm3XPZZfN0NOml3z9FMfmpgXwovR9fp6ryDIoGRM8EPHAB6iHsc0fb8Zz5tw0Ionm3XPZZfN0NOml3z9FMfmpgXwovR9fp6ryDIoGRM8EPHAB6iHrrty
+  # JWT的有效期(单位:秒)
+  expire: 86400
+  # JWT存储在Header中的名称
+  header: Authorization
+  # Bearer前缀
+  tokenPrefix: Bearer
+
+# 系统配置
+system:
+  # 密码加密的盐值
+  password-salt: szr-admin-salt 

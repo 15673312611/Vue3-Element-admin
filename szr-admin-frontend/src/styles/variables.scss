@@ -1,0 +1,100 @@
+// 定义主题颜色
+$primary-color: #409EFF;
+$primary-light: lighten($primary-color, 10%);
+$primary-dark: darken($primary-color, 10%);
+$success-color: #67C23A;
+$warning-color: #E6A23C;
+$danger-color: #F56C6C;
+$info-color: #909399;
+
+// 中性色彩
+$dark-text: #303133;
+$light-text: #606266;
+$extra-light-text: #909399;
+$disabled-text: #C0C4CC;
+$border-color: #DCDFE6;
+$light-border-color: #E4E7ED;
+$lighter-border-color: #EBEEF5;
+$background-color: #F5F7FA;
+$hover-color: #F5F7FA;
+$card-background: #FFFFFF;
+$menu-active-bg: #ebf1ff;  // 菜单激活背景色
+
+// 侧边栏颜色
+$sidebar-dark: #304156;  // 侧边栏深色
+$sidebar-darker: #263445; // 侧边栏更深色
+$sidebar-text: rgba(255, 255, 255, 0.7); // 侧边栏文字颜色
+$sidebar-active-text: #ffffff; // 侧边栏激活文字颜色
+
+// 布局尺寸
+$header-height: 64px;
+$sidebar-width: 240px;
+$content-padding: 20px;
+$border-radius: 4px;
+$border-radius-lg: 8px;
+$border-radius-pill: 999px;
+
+// 阴影效果
+$box-shadow-light: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+$box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+$box-shadow-dark: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.12);
+$card-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+$hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+$button-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+// 字体设置
+$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-size-xs: 12px;
+$font-size-sm: 13px;
+$font-size-base: 14px;
+$font-size-md: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+$font-size-heading: 24px;
+
+// 行高
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-loose: 1.75;
+
+// 字重
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// 过渡动画
+$transition-time: 0.3s;
+$transition-time-fast: 0.2s;
+$transition-time-slow: 0.4s;
+$transition-ease: ease;
+$transition-ease-in: ease-in;
+$transition-ease-out: ease-out;
+$transition-ease-in-out: ease-in-out;
+
+// 间距系统
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 12px;
+$spacing-base: 16px;
+$spacing-lg: 20px;
+$spacing-xl: 24px;
+$spacing-xxl: 32px;
+
+// 响应式断点
+$breakpoint-xs: 576px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 992px;
+$breakpoint-lg: 1200px;
+$breakpoint-xl: 1600px;
+
+// 层级
+$z-index-normal: 1;
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070; 

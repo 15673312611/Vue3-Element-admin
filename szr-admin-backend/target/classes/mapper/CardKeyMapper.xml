@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szr.admin.mapper.CardKeyMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.szr.admin.entity.CardKey">
+        <id column="id" property="id" />
+        <result column="card_no" property="cardNo" />
+        <result column="card_password" property="cardPassword" />
+        <result column="type" property="type" />
+        <result column="value" property="value" />
+        <result column="status" property="status" />
+        <result column="user_id" property="userId" />
+        <result column="use_time" property="useTime" />
+        <result column="valid_days" property="validDays" />
+        <result column="expire_time" property="expireTime" />
+        <result column="create_time" property="createTime" />
+        <result column="batch_no" property="batchNo" />
+        <result column="remark" property="remark" />
+    </resultMap>
+    
+    <!-- 卡密详情结果映射 -->
+    <resultMap id="DetailResultMap" type="com.szr.admin.entity.CardKey" extends="BaseResultMap">
+        <!-- 用户信息 -->
+        <association property="user" javaType="com.szr.admin.entity.User">
+            <id column="user_id" property="id" />
+            <result column="user_username" property="username" />
+            <result column="user_email" property="email" />
+        </association>
+    </resultMap>
+
+    <!-- 分页查询卡密列表 -->
+    <select id="selectCardKeyPage" resultMap="DetailResultMap">
+        SELECT
+            c.*,
+            u.username AS user_username,
+            u.email AS user_email
+        FROM
+            card_keys c
+        LEFT JOIN users u ON c.user_id = u.id
+        <where>
+            <if test="cardNo != null and cardNo != ''">
+                AND c.card_no LIKE CONCAT('%', #{cardNo}, '%')
+            </if>
+            <if test="type != null">
+                AND c.type = #{type}
+            </if>
+            <if test="status != null">
+                AND c.status = #{status}
+            </if>
+            <if test="batchNo != null and batchNo != ''">
+                AND c.batch_no = #{batchNo}
+            </if>
+        </where>
+        ORDER BY c.create_time DESC
+    </select>
+
+    <!-- 根据ID查询卡密详情 -->
+    <select id="selectCardKeyById" resultMap="DetailResultMap">
+        SELECT
+            c.*,
+            u.username AS user_username,
+            u.email AS user_email
+        FROM
+            card_keys c
+        LEFT JOIN users u ON c.user_id = u.id
+        WHERE
+            c.id = #{id}
+    </select>
+</mapper> 

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szr.admin.mapper.DigitalHumanMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.szr.admin.entity.DigitalHuman">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="user_id" property="userId" />
+        <result column="template_id" property="templateId" />
+        <result column="voice_id" property="voiceId" />
+        <result column="config" property="config" />
+        <result column="avatar" property="avatar" />
+        <result column="description" property="description" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+    
+    <!-- 数字人详情结果映射 -->
+    <resultMap id="DetailResultMap" type="com.szr.admin.entity.DigitalHuman" extends="BaseResultMap">
+        <!-- 用户信息 -->
+        <association property="user" javaType="com.szr.admin.entity.User">
+            <id column="user_id" property="id" />
+            <result column="user_username" property="username" />
+            <result column="user_email" property="email" />
+        </association>
+        <!-- 形象信息 -->
+        <association property="template" javaType="com.szr.admin.entity.Template">
+            <id column="template_id" property="id" />
+            <result column="template_name" property="name" />
+            <result column="template_thumbnail" property="thumbnail" />
+        </association>
+        <!-- 音色信息 -->
+        <association property="voice" javaType="com.szr.admin.entity.Voice">
+            <id column="voice_id" property="id" />
+            <result column="voice_name" property="name" />
+            <result column="voice_sample_url" property="sampleUrl" />
+        </association>
+    </resultMap>
+
+    <!-- 分页查询数字人列表 -->
+    <select id="selectDigitalHumanPage" resultMap="DetailResultMap">
+        SELECT
+            d.*,
+            u.username AS user_username,
+            u.email AS user_email,
+            t.name AS template_name,
+            t.thumbnail AS template_thumbnail,
+            v.name AS voice_name,
+            v.sample_url AS voice_sample_url
+        FROM
+            digital_humans d
+        LEFT JOIN users u ON d.user_id = u.id
+        LEFT JOIN templates t ON d.template_id = t.id
+        LEFT JOIN voices v ON d.voice_id = v.id
+        <where>
+            <if test="userId != null">
+                AND d.user_id = #{userId}
+            </if>
+            <if test="keyword != null and keyword != ''">
+                AND (
+                    d.name LIKE CONCAT('%', #{keyword}, '%')
+                    OR d.description LIKE CONCAT('%', #{keyword}, '%')
+                    OR u.username LIKE CONCAT('%', #{keyword}, '%')
+                )
+            </if>
+            <if test="status != null">
+                AND d.status = #{status}
+            </if>
+        </where>
+        ORDER BY d.create_time DESC
+    </select>
+
+    <!-- 根据ID查询数字人详情 -->
+    <select id="selectDigitalHumanById" resultMap="DetailResultMap">
+        SELECT
+            d.*,
+            u.username AS user_username,
+            u.email AS user_email,
+            t.name AS template_name,
+            t.thumbnail AS template_thumbnail,
+            v.name AS voice_name,
+            v.sample_url AS voice_sample_url
+        FROM
+            digital_humans d
+        LEFT JOIN users u ON d.user_id = u.id
+        LEFT JOIN templates t ON d.template_id = t.id
+        LEFT JOIN voices v ON d.voice_id = v.id
+        WHERE
+            d.id = #{id}
+    </select>
+</mapper> 

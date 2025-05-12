@@ -1,0 +1,43 @@
+-- 创建菜单表
+CREATE TABLE IF NOT EXISTS admin_menus (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '主键ID',
+    parent_id BIGINT DEFAULT 0 COMMENT '父级ID',
+    name VARCHAR(50) NOT NULL COMMENT '菜单名称',
+    path VARCHAR(200) COMMENT '路由路径',
+    component VARCHAR(200) COMMENT '组件路径',
+    permission VARCHAR(100) COMMENT '权限标识',
+    type TINYINT DEFAULT 0 COMMENT '类型：0目录，1菜单，2按钮',
+    icon VARCHAR(50) COMMENT '图标',
+    sort INT DEFAULT 0 COMMENT '排序',
+    status TINYINT DEFAULT 1 COMMENT '状态：0禁用，1启用',
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    update_time DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'
+) COMMENT '菜单表';
+
+-- 创建角色表
+CREATE TABLE IF NOT EXISTS admin_roles (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '主键ID',
+    name VARCHAR(50) NOT NULL COMMENT '角色名称',
+    code VARCHAR(50) NOT NULL COMMENT '角色编码',
+    status TINYINT DEFAULT 1 COMMENT '状态：0禁用，1启用',
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    update_time DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'
+) COMMENT '角色表';
+
+-- 创建角色菜单关联表
+CREATE TABLE IF NOT EXISTS admin_role_menu (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '主键ID',
+    role_id BIGINT NOT NULL COMMENT '角色ID',
+    menu_id BIGINT NOT NULL COMMENT '菜单ID',
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    UNIQUE KEY uk_role_menu (role_id, menu_id)
+) COMMENT '角色菜单关联表';
+
+-- 创建用户角色关联表
+CREATE TABLE IF NOT EXISTS admin_user_role (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '主键ID',
+    admin_id BIGINT NOT NULL COMMENT '管理员ID',
+    role_id BIGINT NOT NULL COMMENT '角色ID',
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    UNIQUE KEY uk_user_role (admin_id, role_id)
+) COMMENT '用户角色关联表'; 
