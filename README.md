@@ -1,6 +1,11 @@
 # 数字人后台管理系统
 
-这是一个基于Vue3和Spring Boot的数字人后台管理系统，主要用于管理数字人相关资源和用户。
+这是一个基于Vue3和Spring Boot的后台管理系统，主要用于管理数字人相关资源和用户。适合小型项目作为后台管理系统使用
+演示站:https://admincs.chataot.cn/
+
+![image](https://github.com/user-attachments/assets/b5b69337-32b8-4fd9-8ab1-88bf758c3e53)
+![image](https://github.com/user-attachments/assets/5096b15d-ff16-4ddb-b56b-3e828c398d55)
+![image](https://github.com/user-attachments/assets/4b028e9f-56c8-4e3d-9309-cba6dc9c44d6)
 
 ## 项目结构
 
@@ -23,7 +28,7 @@ szrConsole/
 - Spring Boot 2.7.x
 - Spring Security + JWT
 - MyBatis Plus
-- MySQL
+- MySQL8.0
 
 ## 功能模块
 
