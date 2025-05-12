@@ -4,8 +4,8 @@
 
 演示站:https://admincs.chataot.cn/
 
-联系作者,接网站开发 白菜价(微信号：soe303)
-![微信图片_20241105222850](https://github.com/user-attachments/assets/57d247f8-0db1-4231-bd2b-b4111bf00f47)
+作者微信：soe303(接网站开发 白菜价)
+
 
 
 ![image](https://github.com/user-attachments/assets/b5b69337-32b8-4fd9-8ab1-88bf758c3e53)
